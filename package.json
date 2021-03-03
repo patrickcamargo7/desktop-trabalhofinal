@@ -7,10 +7,12 @@
     "email": "patrickcamargo.acc@gmail.com"
   },
   "main": "main.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "start": "electron .",
-    "watch": "nodemon --exec electron ."
+    "watch": "nodemon --exec electron .",
+    "build": "electron-builder build",
+    "publish:linux": "electron-builder -l -p 'onTagOrDraft'"
   },
   "keywords": [],
   "license": "ISC",
