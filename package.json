@@ -1,19 +1,35 @@
 {
   "name": "trabalho-final-desktop",
+  "description": "trabalho",
+  "repository": "https://github.com/patrickcamargo7/desktop-trabalhofinal",
+  "author": {
+    "name": "Patrick Camargo",
+    "email": "patrickcamargo.acc@gmail.com"
+  },
   "main": "main.js",
+  "version": "1.0.0",
   "scripts": {
     "start": "electron .",
     "watch": "nodemon --exec electron ."
   },
   "keywords": [],
-  "author": "",
   "license": "ISC",
   "devDependencies": {
     "electron": "^11.2.1",
+    "electron-builder": "^22.10.5",
     "nodemon": "^2.0.7"
   },
   "dependencies": {
     "file-system": "^2.2.2",
     "quill": "^1.3.7"
-  }
+  },
+  "build": {
+    "appId": "ifpr.desktop.trabalhofinal",
+    "fileAssociations": [{
+      "ext": ".rt",
+      "name": "RichText File",
+      "role": "Editor"
+    }]
+  },
+  "provider": "github"
 }
