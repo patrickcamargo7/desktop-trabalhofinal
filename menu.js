@@ -3,8 +3,9 @@ const { Menu, ipcMain } = require('electron');
 let mainMenu;
 
 const fileActions = require('./menu/file_actions');
+const actions = require('./menu/actions');
 
-exports.appMenu = (window, filePath) => {
+exports.appMenu = (window, filePath, createWindow) => {
   const template = [
     {
       label: 'File',
@@ -13,12 +14,12 @@ exports.appMenu = (window, filePath) => {
           id: 'new',
           label: 'New',
           click: () => {
-            window.webContents.send('menu-add-click');
+            createWindow();
           },
           accelerator: 'CommandOrControl+N',
         },
         {
-          id: 'new',
+          id: 'open',
           label: 'Open',
           click: () => {
             fileActions.open(window);
@@ -26,7 +27,7 @@ exports.appMenu = (window, filePath) => {
           accelerator: 'CommandOrControl+O',
         },
         {
-          id: 'new',
+          id: 'save',
           label: 'Save',
           click: () => {
             fileActions.save(window, filePath);
@@ -34,12 +35,25 @@ exports.appMenu = (window, filePath) => {
           accelerator: 'CommandOrControl+S',
         },
         {
-          id: 'delete',
+          id: 'close',
           label: 'Close',
           click: () => {
-            fileActions.close();
+            fileActions.close(window);
           },
           accelerator: 'CommandOrControl+W',
+        },
+      ],
+    },
+    {
+      label: 'Action',
+      submenu: [
+        {
+          id: 'clearall',
+          label: 'Clear All',
+          click: () => {
+            actions.clearAll(window);
+          },
+          accelerator: 'CommandOrControl+R',
         },
       ],
     },
